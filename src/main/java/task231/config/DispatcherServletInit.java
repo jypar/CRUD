@@ -5,13 +5,16 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 public class DispatcherServletInit extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return null;
+        return new Class[]{
+                JpaConfig.class
+        };
     }
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
         return new Class[]{
                 Webconfig.class
+
         };
     }
 

@@ -2,7 +2,7 @@ package task231.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="users")
+@Table(name="user")
 public class User {
 
     @Id()
