@@ -20,7 +20,6 @@ public  class DaoImpl implements Dao {
    }
 
     @Override
-    @Transactional
     public void update(User user) {
        entityManager.merge(user);
    }
@@ -38,7 +37,6 @@ public  class DaoImpl implements Dao {
    }
 
     @Override
-    @Transactional
     public User findById(Long id) {
         return entityManager.find(User.class,id);
     }

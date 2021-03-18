@@ -11,6 +11,7 @@ import task231.UsersService.UserService;
 import task231.config.JpaConfig;
 import task231.model.User;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,14 +47,15 @@ public class UserController {
     }
 
     @GetMapping("/user-update/{id}")
-    public String updateUserForm(@PathVariable("id") Long id, Model model){
+    public ModelAndView updateUserForm(@PathVariable("id") Long id){
         User user = service.findById(id);
-        model.addAttribute("user", user);
-        return "user-update";
+        ModelAndView model = new ModelAndView("user-update");
+        model.addObject("user",user);
+        return model;
     }
 
     @PostMapping("/user-update")
-    public String updateUser(@ModelAttribute User user){
+    public String updateUser(@ModelAttribute(value="user")User user){
         service.update(user);
         return "redirect:/users";
     }

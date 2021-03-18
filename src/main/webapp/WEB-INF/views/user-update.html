@@ -7,7 +7,7 @@
 <body>
 <form action="#" th:action="@{/user-update}" th:object="${user}" method="post">
     <label for="id">ID</label>
-    <input  type="number" th:field="*{id}" id="id" placeholder="ID">
+    <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
     <br/>
     <label for="name">First name</label>
     <input type="text" th:field="*{name}" id="name" placeholder="First Name">

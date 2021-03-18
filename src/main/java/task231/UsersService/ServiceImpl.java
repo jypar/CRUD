@@ -21,6 +21,7 @@ public class ServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public void update(User user) {
 
         dao.update(user);
