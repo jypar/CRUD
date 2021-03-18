@@ -47,11 +47,10 @@ public class UserController {
     }
 
     @GetMapping("/user-update/{id}")
-    public ModelAndView updateUserForm(@PathVariable("id") Long id){
+    public String updateUserForm(@PathVariable("id") Long id,Model model){
         User user = service.findById(id);
-        ModelAndView model = new ModelAndView("user-update");
-        model.addObject("user",user);
-        return model;
+        model.addAttribute("user",user);
+        return "user-update";
     }
 
     @PostMapping("/user-update")
