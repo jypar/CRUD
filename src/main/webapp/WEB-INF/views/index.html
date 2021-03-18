@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
@@ -20,7 +21,10 @@
         <td th:utext="${user.getName()}">name</td>
         <td th:utext="${user.getSurname()}">surname</td>
         <td th:utext="${user.getEmail()}">email</td>
+        <td><a th:href="@{user-update/{id}(id=${user.id})}">Edit</a></td>
+        <td><a th:href="@{user-delete/{id}(id=${user.id})}">Delete</a></td>
     </tr>
 </table>
+<p><a href=/user-create>Create User</a></p>
 </body>
 </html>

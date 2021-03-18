@@ -1,29 +1,47 @@
 package task231.UsersService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Configurable;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import task231.UsersDao.Dao;
 import task231.model.User;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-@Component
 public class ServiceImpl implements UserService {
 
     @Autowired
     private Dao dao;
+
     @Override
+    @Transactional
     public void add(User user) {
         dao.add(user);
     }
 
     @Override
+    public void update(User user) {
+
+        dao.update(user);
+    }
+
+    @Override
     @Transactional
+    public void remove(Long id) {
+
+        dao.remove(id);
+
+    }
+
+    @Override
     public List<User> getUsers() {
         return dao.getUsers();
+    }
+
+    @Override
+    @Transactional
+    public User findById(Long id) {
+        return dao.findById(id);
     }
 }

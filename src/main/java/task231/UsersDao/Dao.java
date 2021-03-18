@@ -6,5 +6,8 @@ import java.util.List;
 
 public interface Dao {
     void add(User user);
+    void update(User user);
+    void remove(Long id);
     List<User> getUsers();
+    User findById(Long id);
 }

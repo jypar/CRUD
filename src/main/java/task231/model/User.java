@@ -18,7 +18,11 @@ public class User {
     @Column(name="email")
     private String email;
 
-    public User(String name, String surname, String email) {
+    public User() {
+    }
+
+    public User(Long id,String name, String surname, String email) {
+        this.id = id;
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -38,5 +42,27 @@ public class User {
 
     public String getEmail() {
         return email;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
