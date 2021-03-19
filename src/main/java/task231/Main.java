@@ -7,6 +7,6 @@ public class Main {
 
     public static void main(String[] args) {
         DaoImpl dao=new DaoImpl();
-        dao.update(new User(2l,"gj","jg",".com"));
+        //dao.update(new User(2l,"gj","jg",".com"));
     }
 }

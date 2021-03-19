@@ -1,19 +1,11 @@
 package task231.controller;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import task231.UsersDao.DaoImpl;
 import task231.UsersService.UserService;
-import task231.config.JpaConfig;
 import task231.model.User;
-
-import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class UserController {
@@ -46,16 +38,19 @@ public class UserController {
         return "redirect:/users";
     }
 
-    @GetMapping("/user-update/{id}")
-    public String updateUserForm(@PathVariable("id") Long id,Model model){
+    @RequestMapping("/user-update/{id}")
+    public ModelAndView showEditProductPage(@PathVariable(name = "id") Long id) {
+        ModelAndView mav = new ModelAndView("user-update");
         User user = service.findById(id);
-        model.addAttribute("user",user);
-        return "user-update";
+        mav.addObject("user", user);
+
+        return mav;
     }
 
-    @PostMapping("/user-update")
-    public String updateUser(@ModelAttribute(value="user")User user){
+    @RequestMapping(value = "/user-update", method = RequestMethod.POST)
+    public String saveProduct(@ModelAttribute("user") User user) {
         service.update(user);
+
         return "redirect:/users";
     }
 }
